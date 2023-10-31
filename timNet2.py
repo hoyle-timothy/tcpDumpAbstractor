@@ -20,7 +20,6 @@ def grab_interfaces():
             line = line.split(' ')[0]
             line = line.split('.')[1]
             intList.append(line)
-            #print(intList[n])
             n += 1
 
         if not line:
@@ -44,7 +43,8 @@ def choice_control():
             line = line.decode('utf-8')
 #            line = line.split(' ')[0]
 #            line = line.split('.')[1]
-            print(line)
+            print(line.strip()) #adding '.strip() removes any leading or
+                                #trailing whitespace
             n += 1
 #    for item in intList:
 #        print(f'{range}. {intList[i]} interface')
@@ -53,4 +53,4 @@ def choice_control():
 #    choice = input('\nPlease input the number next to your choice: ').lower()
 choice_control()
 intList = grab_interfaces()
-print (intList[1])
+print(intList[0])
