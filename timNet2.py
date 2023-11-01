@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
 
 from subprocess import Popen, PIPE
 
@@ -33,11 +33,12 @@ def choice_control():
 #    range = 1
 #    i = 0
     n = 0
-    print(f'Please make a choice from the following options: \n')
+    print(f"\nPLEASE MAKE A CHOICE FROM THE FOLLOWING OPTIONS: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
         line = p.stdout.readline()
         if len(line.strip())==0:
+            print("\n")
             break
         else:
             line = line.decode('utf-8')
