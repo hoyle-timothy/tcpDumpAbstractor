@@ -7,6 +7,7 @@ from subprocess import Popen, PIPE
 i = 0
 
 def grab_interfaces():
+    '''this function grabs the name of each available interface on your system and plugs those names into a list for later reference'''
     intList = []
     n = 0
     p = Popen(["tcpdump","-D"], stdout=PIPE)
@@ -31,6 +32,7 @@ def grab_interfaces():
 
 def choice_control(intList):
     n = 0
+    choice_dict = {'1': intList[0], '2': intList[1], '3': intList[2]}
     print(f"\nHERE ARE YOU AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
