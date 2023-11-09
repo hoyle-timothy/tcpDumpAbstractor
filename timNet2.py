@@ -31,8 +31,15 @@ def grab_interfaces():
 #list their possible options for them
 
 def choice_control(intList):
+    choice_dict = {}
+    option = 1
     n = 0
-    choice_dict = {'1': intList[0], '2': intList[1], '3': intList[2]}
+    i = 0
+    for element in intList:
+        choice_dict[option].append(intList[i])
+        option += 1
+        i += 1
+    #choice_dict = {'1': intList[0], '2': intList[1], '3': intList[2]}
     print(f"\nHERE ARE YOU AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
@@ -46,10 +53,5 @@ def choice_control(intList):
                                 #trailing whitespace
             n += 1
     userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
-#    for item in intList:
-#        print(f'{range}. {intList[i]} interface')
-#        range += 1
-#        i += 1
-#    choice = input('\nPlease input the number next to your choice: ').lower()
 intList = grab_interfaces()
 choice_control(intList)
