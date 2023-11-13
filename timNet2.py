@@ -31,15 +31,15 @@ def grab_interfaces():
 #list their possible options for them
 
 def choice_control(intList):
-    choice_dict = {}
     option = 1
     n = 0
     i = 0
     for element in intList:
-        choice_dict[option].append(intList[i])
+        choice_dict = {option: intList[i]}
         option += 1
         i += 1
-    #choice_dict = {'1': intList[0], '2': intList[1], '3': intList[2]}
+    for x in choice_dict:
+        print(choice_dict[x])
     print(f"\nHERE ARE YOU AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
