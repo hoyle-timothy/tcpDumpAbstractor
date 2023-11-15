@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from subprocess import Popen, PIPE
 
@@ -28,19 +28,21 @@ def grab_interfaces():
     return intList
 
 #next, query the user for which interface they would like to listen on, and
-#list their possible options for them
+#list the possible options for them
 
 def choice_control(intList):
+    choice_dict = {} #initialize dictionary
     option = 1
     n = 0
     i = 0
     for element in intList:
-        choice_dict = {option: intList[i]}
+        choice_dict[option] = intList[i]
         option += 1
         i += 1
     for x in choice_dict:
         print(choice_dict[x])
-    print(f"\nHERE ARE YOU AVAILABLE INTERFACES: ")
+
+    print(f"\nHERE ARE YOUR AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
         line = p.stdout.readline()
