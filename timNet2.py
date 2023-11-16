@@ -4,17 +4,16 @@ from subprocess import Popen, PIPE
 
 #first, grab all of the interface names with 'tcpdump -D' cmd and place them
 #inside of an array
-i = 0
 
 def grab_interfaces():
     '''this function grabs the name of each available interface on your system and plugs those names into a list for later reference'''
-    intList = []
-    n = 0
-    p = Popen(["tcpdump","-D"], stdout=PIPE)
+    intList = [] # initialize list
+    n = 0 # initialize iterator
+    p = Popen(["tcpdump","-D"], stdout=PIPE) # grabs the results from the 'tcpdump -D' command and pipes them to a file handle, 'p'
     while True:
-        line = p.stdout.readline()
-        if len(line.strip()) == 0: # line.strip() removes any leading or trailing
-                                   # whitespace
+        line = p.stdout.readline() # take the result from the line that was read and place the result into a variable called 'line'
+        if len(line.strip()) == 0: # tests for the presence of an empty line and breaks out of the loop if it sees an empty line. 
+				   # 'Line.strip()' removes any leading or trailing whitespace from the line
             break
         else:
             line = line.decode('utf-8')
@@ -39,8 +38,8 @@ def choice_control(intList):
         choice_dict[option] = intList[i]
         option += 1
         i += 1
-    for x in choice_dict:
-        print(choice_dict[x])
+#    for x in choice_dict:
+#        print(choice_dict[x])
 
     print(f"\nHERE ARE YOUR AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
@@ -55,5 +54,7 @@ def choice_control(intList):
                                 #trailing whitespace
             n += 1
     userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
+    while not userChoice in choice_dict:
+        userChoice = input(f"\nNon-existent interface. \nPlease select a valid interface by typing the number next to it: ")
 intList = grab_interfaces()
 choice_control(intList)
