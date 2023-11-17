@@ -38,9 +38,9 @@ def choice_control(intList):
         choice_dict[option] = intList[i]
         option += 1
         i += 1
-#    for x in choice_dict:
-#        print(choice_dict[x])
 
+#    for key in choice_dict:
+#        print(key, "-->",choice_dict[key])
     print(f"\nHERE ARE YOUR AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
@@ -53,8 +53,11 @@ def choice_control(intList):
             print(line.strip()) #adding '.strip() removes any leading or
                                 #trailing whitespace
             n += 1
-    userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
+    userChoice = int(input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: "))
+    while type(userChoice) != int:
+        userChoice = int(input(f"\nYOUR INPUT WAS NOT A NUMBER.\nPLEASE INPUT A VALID NUMBER FOR YOUR SELECTION: ")
     while not userChoice in choice_dict:
-        userChoice = input(f"\nNon-existent interface. \nPlease select a valid interface by typing the number next to it: ")
+        userChoice = input(f"\nNON-EXISTENT INTERFACE. \nPLEASE SELECT A VALID INTERFACE BY TYPING THE NUMBER NEXT TO IT: ")
+    print(userChoice)
 intList = grab_interfaces()
 choice_control(intList)
