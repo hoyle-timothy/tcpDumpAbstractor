@@ -53,11 +53,21 @@ def choice_control(intList):
             print(line.strip()) #adding '.strip() removes any leading or
                                 #trailing whitespace
             n += 1
-    userChoice = int(input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: "))
-    while type(userChoice) != int:
-        userChoice = int(input(f"\nYOUR INPUT WAS NOT A NUMBER.\nPLEASE INPUT A VALID NUMBER FOR YOUR SELECTION: ")
-    while not userChoice in choice_dict:
-        userChoice = input(f"\nNON-EXISTENT INTERFACE. \nPLEASE SELECT A VALID INTERFACE BY TYPING THE NUMBER NEXT TO IT: ")
-    print(userChoice)
+    while True:
+        userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
+        try:
+            userChoice = int(userChoice)
+            break
+        except:
+            print("\nYOUR INPUT WAS NOT A NUMBER.")
+    while True:
+        try:
+            userChoice in choice_dict
+            break
+        except:
+            print("\nYou have selected an interface that does no exist. Please check the list of available interfaces again and make a valid selection")
+#    while not userChoice in choice_dict:
+#        userChoice = input(f"\nNON-EXISTENT INTERFACE. \nPLEASE SELECT A VALID INTERFACE BY TYPING THE NUMBER NEXT TO IT: ")
+    print(type(userChoice),userChoice)
 intList = grab_interfaces()
 choice_control(intList)
