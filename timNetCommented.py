@@ -34,13 +34,11 @@ def choice_control(intList):
     option = 1
     n = 0
     i = 0
-    for element in intList:
-        choice_dict[option] = intList[i]
-        option += 1
-        i += 1
+    for element in intList: # for each element in 'intList'
+        choice_dict[option] = intList[i] # load a numeric key and its associated interface value
+        option += 1 # move to next number in the number line i.e. 'increment'
+        i += 1 # move to next position in interface list 'intList'
 
-#    for key in choice_dict:
-#        print(key, "-->",choice_dict[key])
     print(f"\nHERE ARE YOUR AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
