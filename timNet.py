@@ -39,8 +39,6 @@ def choice_control(intList):
         option += 1
         i += 1
 
-#    for key in choice_dict:
-#        print(key, "-->",choice_dict[key])
     print(f"\nHERE ARE YOUR AVAILABLE INTERFACES: ")
     p = Popen(["tcpdump","-D"], stdout=PIPE)
     while True:
@@ -50,9 +48,7 @@ def choice_control(intList):
             break
         else:
             line = line.decode('utf-8')
-            print(line.strip()) #adding '.strip() removes any leading or
-                                #trailing whitespace
-            n += 1
+            print(line.strip()) #adding '.strip() removes any leading or trailing whitespace
     while True:
         userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
         try:
