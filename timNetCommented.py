@@ -50,14 +50,17 @@ def choice_control(intList):
             line = line.decode('utf-8') # convert the bytestring to utf-8 encoding 
             print(line.strip()) # <instantiatedMethod>.strip() removes any leading or trailing whitespace
     while True: # this while loop tests whether or not the user input was of type 'integer'
-        userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
-        try:
-            userChoice = int(userChoice)
-            break
-        except:
-            print("\nYOUR INPUT WAS NOT A NUMBER.")
-    while not userChoice in choice_dict:
-        userChoice = int(input(f"\nNON-EXISTENT INTERFACE. \nPLEASE SELECT A VALID INTERFACE BY TYPING THE NUMBER NEXT TO IT: "))
-    print(f'You\'ve selected: {userChoice} --> {choice_dict[userChoice]}')
+        userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ") # takes the user input and plugs it into a variable called 'userChoice'
+        try: # attempt to perform what is below
+            userChoice = int(userChoice) # take the value of the variable 'userChoice' and attempt to force it to become data type integer
+            break # if the value of 'userChoice' was successfully converted to an integer, then break out of the 'while True:' loop
+        except: # if the attempt to convert the value of the variable 'userChoice' to data type integer was unsuccessful, run the code below
+            print("\nYOUR INPUT WAS NOT A NUMBER.") # print this message to the screen and re-enter the 'while True:' loop
+    while not userChoice in choice_dict: # this while loop tests whether or not the value of 'userChoice' actually exists as a key in the 'choice_dict' dictionary
+        # the line below informs the user they have selected a choice that is not available in the 'choice_dict' dictionary, and asks them to select a choice that is available
+        userChoice = int(input(f"\nNON-EXISTENT INTERFACE. \nPLEASE SELECT A VALID INTERFACE BY TYPING THE NUMBER NEXT TO IT: ")) 
+            if userChoice != int() or userChoice != 
+                print("Your selection was not a number"
+        print(f'You\'ve selected: {userChoice} --> {choice_dict[userChoice]}')
 intList = grab_interfaces()
 choice_control(intList)
