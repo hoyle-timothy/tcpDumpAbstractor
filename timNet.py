@@ -53,11 +53,13 @@ def choice_control(intList):
         userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ")
         try:
             userChoice = int(userChoice)
-            break
         except:
             print("\nYOUR INPUT WAS NOT A NUMBER.")
-    while not userChoice in choice_dict:
-        userChoice = int(input(f"\nNON-EXISTENT INTERFACE. \nPLEASE SELECT A VALID INTERFACE BY TYPING THE NUMBER NEXT TO IT: "))
+            continue
+        if userChoice in choice_dict:
+            break
+        else:
+            print("\nYOUR SELECTION DOES NOT EXIST. PLEASE MAKE A VALID SELECTION")
     print(f'You\'ve selected: {userChoice} --> {choice_dict[userChoice]}')
 intList = grab_interfaces()
 choice_control(intList)
