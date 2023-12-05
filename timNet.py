@@ -30,6 +30,7 @@ def grab_interfaces():
 #list the possible options for them
 
 def choice_control(intList):
+    '''define choice_control here'''
     choice_dict = {} #initialize dictionary
     option = 1
     n = 0
@@ -62,6 +63,7 @@ def choice_control(intList):
             print("\nYOUR SELECTION DOES NOT EXIST. PLEASE MAKE A VALID SELECTION")
     print(f'You\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
 
+def main_menu():
 
 intList = grab_interfaces()
 choice_control(intList)
