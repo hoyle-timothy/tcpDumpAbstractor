@@ -6,7 +6,7 @@ from subprocess import Popen, PIPE
 #inside of an array
 
 def grab_interfaces():
-    '''this function grabs the name of each available interface on your system and plugs those names into a python list for later reference'''
+    '''this function grabs the name of each available interface on your system and plugs those names into a list for later reference'''
     intList = [] # initialize list
     n = 0 # initialize iterator
     p = Popen(["tcpdump","-D"], stdout=PIPE) # grabs the results from the 'tcpdump -D' command and pipes them to a file handle, 'p'
@@ -53,13 +53,13 @@ def choice_control(intList):
         userChoice = input("PRESS THE NUMBER OF THE INTERFACE YOU WOULD LIKE TO LISTEN ON: ") # takes the user input and plugs it into a variable called 'userChoice'
         try: # attempt to perform what is below
             userChoice = int(userChoice) # take the value of the variable 'userChoice' and attempt to force it to become data type integer
-        except: # if the 'try' statement failed, execute what is below
-            print("\nYOUR INPUT WAS NOT A NUMBER.")
-            continue # go directly to the top of the 'while True:' loop
-        if userChoice in choice_dict: # this statement tests if the value of 'userChoice' exists in 'choice_dict' as a key
-            break # break out of the 'while True:' loop and go to the next statement
-        else: # if the 'if' statement above evaluates to 'false', execute the code below
-            print("\nYOUR SELECTION DOES NOT EXIST. PLEASE MAKE A VALID SELECTION")
-    print(f'You\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
-intList = grab_interfaces() # call 'grab_interfaces()' method and plug the value of its 'return' statement into a variable called 'intList' 
-choice_control(intList) # call the 'choice_control()' method, and pass it the 'intList' variable
+        except: # if the attempt to convert the value of the variable 'userChoice' to data type integer was unsuccessful, run the code below
+            print("\nYOUR INPUT WAS NOT A NUMBER.") # print this message to the screen and re-enter the 'while True:' loop
+	    continue
+	if userChoice in choice_dict:
+	    break
+	else:
+	    print("\nYOUR SELECTION DOES NOT EXIST - PLEASE MAKE A VALID SELECTION")	
+        print(f'You\'ve selected: {userChoice} --> {choice_dict[userChoice]}')
+intList = grab_interfaces()
+choice_control(intList)

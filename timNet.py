@@ -60,10 +60,10 @@ def choice_control(intList):
         if userChoice in choice_dict:
             break
         else:
-            print("\nYOUR SELECTION DOES NOT EXIST. PLEASE MAKE A VALID SELECTION")
+            print("\nYOUR SELECTION DOES NOT EXIST - PLEASE MAKE A VALID SELECTION")
     print(f'You\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
 
-def main_menu():
+#def main_menu():
 
 intList = grab_interfaces()
 choice_control(intList)
