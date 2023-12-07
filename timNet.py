@@ -63,7 +63,7 @@ def choice_control(intList):
             print("\nYOUR SELECTION DOES NOT EXIST - PLEASE MAKE A VALID SELECTION")
     print(f'You\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
 
-#def main_menu():
-
+def main_menu():
+    print("Now that you've selected the interface to listen on, what would you like to do?")
 intList = grab_interfaces()
 choice_control(intList)

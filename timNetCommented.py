@@ -54,11 +54,11 @@ def choice_control(intList):
         try: # attempt to perform what is below
             userChoice = int(userChoice) # take the value of the variable 'userChoice' and attempt to force it to become data type integer
         except: # if the attempt to convert the value of the variable 'userChoice' to data type integer was unsuccessful, run the code below
-            print("\nYOUR INPUT WAS NOT A NUMBER.") # print this message to the screen and re-enter the 'while True:' loop
-	    continue
-	if userChoice in choice_dict:
-	    break
-	else:
+            print("\nYOUR INPUT WAS NOT A NUMBER.") # print this message to the screen 
+	    continue # restart at the top of the 'while True:' loop
+	if userChoice in choice_dict: # test to see if the user selection exists as a key in the 'choice_dict' dictionary. If it does, run the code below
+	    break # break out of the 'while True:' loop
+	else: #  if the user selection does NOT exist in 'choice_dict' dictionary, execute the code below
 	    print("\nYOUR SELECTION DOES NOT EXIST - PLEASE MAKE A VALID SELECTION")	
         print(f'You\'ve selected: {userChoice} --> {choice_dict[userChoice]}')
 intList = grab_interfaces()
