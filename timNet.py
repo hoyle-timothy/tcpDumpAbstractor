@@ -61,9 +61,13 @@ def choice_control(intList):
             break
         else:
             print("\nYOUR SELECTION DOES NOT EXIST - PLEASE MAKE A VALID SELECTION")
-    print(f'You\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
+    print(f'\nYou\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
 
 def main_menu():
+    '''Main menu selection'''
+    mmenu_selection_dict = {} # initializes main menu dictionary
     print("Now that you've selected the interface to listen on, what would you like to do?")
+    print(f"\n*************************MAIN MENU********************\n  1. Listen NOW\n  2. Select SOURCE IP address to listen for\n  3. Select DESTINATION IP address to listen for\n  4. Select DPORT (destination port)to listen for\n  5. Select SPORT (source port) to listen for\n  4. SHOW me the current payload")
 intList = grab_interfaces()
 choice_control(intList)
+main_menu()
