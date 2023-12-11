@@ -62,12 +62,18 @@ def choice_control(intList):
         else:
             print("\nYOUR SELECTION DOES NOT EXIST - PLEASE MAKE A VALID SELECTION")
     print(f'\nYou\'ve selected: {userChoice} --> Interface: {choice_dict[userChoice]}')
+    return choice_dict[userChoice]
 
 def main_menu():
     '''Main menu selection'''
-    mmenu_selection_dict = {} # initializes main menu dictionary
+#    mmenu_selection_dict = {'1':'','2':'','3':'','4':'','5':'','6':''} # initializes main menu dictionary
     print("Now that you've selected the interface to listen on, what would you like to do?")
-    print(f"\n*************************MAIN MENU********************\n  1. Listen NOW\n  2. Select SOURCE IP address to listen for\n  3. Select DESTINATION IP address to listen for\n  4. Select DPORT (destination port)to listen for\n  5. Select SPORT (source port) to listen for\n  4. SHOW me the current payload")
+    print(f"\n*************************MAIN MENU********************\n  1. Listen NOW\n  2. Select SOURCE IP address to listen for\n  3. Select DESTINATION IP address to listen for\n  4. Select DPORT (destination port)to listen for\n  5. Select SPORT (source port) to listen for\n  6. SHOW me the current payload")
+    menu_choice = input("\nPlease make your selection: ")
+    return menu_choice
+
+def listen(int_choice):
+    p = Popen(["tcpdump","-i","int_choice"], stdout=PIPE) # grabs the results from the 'tcpdump -D' command and pipes them to a file handle, 'p'
 intList = grab_interfaces()
-choice_control(intList)
-main_menu()
+int_choice = choice_control(intList)
+user_menu_selection = main_menu()
