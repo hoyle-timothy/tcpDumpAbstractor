@@ -72,8 +72,9 @@ def main_menu():
     menu_choice = input("\nPlease make your selection: ")
     return menu_choice
 
-def listen(int_choice):
-    p = Popen(["tcpdump","-i","int_choice"], stdout=PIPE) # grabs the results from the 'tcpdump -D' command and pipes them to a file handle, 'p'
+def listen(int_choice,source_ip):
+    p = Popen(["tcpdump","-i","int_choice"], stdout=PIPE) # grabs the results from the 'tcpdump' command and pipes them to a file handle, 'p'
+    for row in iter()
 intList = grab_interfaces()
 int_choice = choice_control(intList)
 user_menu_selection = main_menu()
